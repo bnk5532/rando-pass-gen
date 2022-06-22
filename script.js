@@ -1,19 +1,20 @@
-// Assignment Code
+// global variables defined
 var generateBtn = document.querySelector("#generate");
 
 var special = "!@#$%^&*()";
 var numbers = "0123456789";
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+// generate password function begins window prompt selections, logs responses and yields a random result.
 function generatePassword() {
   var results = "";
-  var length = prompt("How long?");
+  var length = prompt("How many characters in length would you like the password to be?");
   console.log(length);
   if (length < 8 || length > 128) {
     alert("Password must be 8 to 128 characters!");
     return generatePassword();
   } else {
+    // redefined variables with confirmation prompts  
     var specialCon = confirm("Select OK to include special characters?");
     console.log(specialCon);
     var numbersCon = confirm("Select OK to include numbers characters?");
@@ -23,6 +24,7 @@ function generatePassword() {
     var uppercaseCon = confirm("Select OK to include uppercase characters?");
     console.log(uppercaseCon);
   }
+  // if fail statements. Loops back to beginning of function if all fail.
   if (
     !specialCon &&
     !numbersCon &&
@@ -31,7 +33,7 @@ function generatePassword() {
   ) {
     generatePassword();
   }
-
+  // if true, result will include random value from selection.
   if (specialCon) {
     results = results + special;
   }
@@ -44,9 +46,9 @@ function generatePassword() {
   if (uppercaseCon) {
     results = results + uppercase;
   }
-
+// new variable for results defined, which is required for concatenation of math function.
   var newRes = "";
-
+//results 
   for (var i = 0; i < length; i++) {
     newRes += results.charAt(Math.floor(Math.random() * results.length - 1));
     console.log(newRes);
