@@ -13,7 +13,7 @@ function generatePassword() {
   if (length < 8 || length > 128) {
     alert("Password must be 8 to 128 characters!");
     return generatePassword();
-  } else {
+  } else { 
     // redefined variables with confirmation prompts  
     var specialCon = confirm("Select OK to include special characters?");
     console.log(specialCon);
@@ -31,6 +31,7 @@ function generatePassword() {
     !lowercaseCon  &&
     !uppercaseCon  
   ) {
+    alert("You must select at least one character type to proceed!");
     generatePassword();
   }
   // if true, result will include random value from selection.
